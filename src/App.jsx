@@ -4,9 +4,11 @@ import confetti from "canvas-confetti";
 import "./App.css";
 
 function App() {
-  // pages: question | yes | memories | message
+  // pages: question | yes | pin | memories | message
   const [page, setPage] = useState("question");
-
+  // 🔐 PIN states
+  const [pin, setPin] = useState("");
+  const [pinError, setPinError] = useState("");
   const [noPosition, setNoPosition] = useState({ top: "60%", left: "55%" });
   const [noMsg, setNoMsg] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -88,7 +90,17 @@ function App() {
         setSending(false);
       });
   };
+  const correctPin = "1228";
 
+  const verifyPin = () => {
+    if (pin === correctPin) {
+      setPin("");
+      setPinError("");
+      setPage("memories");
+    } else {
+      setPinError("❌ Wrong PIN. Try again 💔");
+    }
+  };
   return (
     <div className="container">
 
@@ -127,12 +139,43 @@ function App() {
           </p>
           <div className="hearts">💖💖💖💖💖</div>
 
-          <button className="memory-btn" onClick={() => setPage("memories")}>
+          <button className="memory-btn" onClick={() => setPage("pin")}>
             Let’s explore some beautiful memories 💕
           </button>
         </div>
       )}
+      {/* 🔐 PIN PAGE */}
+      {page === "pin" && (
+        <div className="message-page">
+          <h1>🔐 Enter Secret PIN</h1>
+          <p>Only special people know this 💖</p>
 
+          <input
+            type="password"
+            maxLength="4"
+            value={pin}
+            onChange={(e) => setPin(e.target.value)}
+            placeholder="4-digit PIN"
+            style={{
+              fontSize: "20px",
+              textAlign: "center",
+              letterSpacing: "8px",
+              padding: "10px",
+              marginTop: "10px",
+            }}
+          />
+
+          {pinError && <p style={{ color: "red" }}>{pinError}</p>}
+
+          <button className="submit-btn" onClick={verifyPin}>
+            Unlock 💕
+          </button>
+
+          <button className="back-btn" onClick={() => setPage("yes")}>
+            ⬅ Back
+          </button>
+        </div>
+      )}
       {/* 📸 MEMORIES PAGE */}
       {page === "memories" && (
         <div className="memories-page">

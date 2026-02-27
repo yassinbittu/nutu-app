@@ -16,7 +16,84 @@ body {
   background: linear-gradient(135deg, #ff758c, #ff7eb3);
   overflow-x: hidden;
 }
+/* 🔐 PIN PAGE */
+.pin-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
 
+.pin-page h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+
+.pin-page p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* PIN INPUT */
+.pin-input {
+  width: 160px;
+  font-size: 24px;
+  padding: 12px;
+  text-align: center;
+  letter-spacing: 10px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  margin-bottom: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* ERROR MESSAGE */
+.pin-error {
+  color: #ffe1e1;
+  margin-bottom: 10px;
+  animation: shake 0.35s ease-in-out;
+}
+
+/* UNLOCK BUTTON */
+.unlock-btn {
+  background: #fff;
+  color: #ff4d6d;
+  font-size: 16px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.unlock-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* BACK BUTTON */
+.pin-page .back-btn {
+  margin-top: 15px;
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+/* SHAKE ANIMATION */
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-6px); }
+  100% { transform: translateX(0); }
+}
 /* =========================
    🌟 CONTAINER
 ========================= */
